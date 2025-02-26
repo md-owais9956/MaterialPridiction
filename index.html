@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Road Material Recommender</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+            text-align: center;
+            padding: 50px;
+        }
+        .container {
+            background: #1f1f2e;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            display: inline-block;
+            width: 90%;
+            max-width: 500px;
+        }
+        select, button {
+            margin: 10px;
+            padding: 12px;
+            font-size: 16px;
+            border-radius: 8px;
+            border: none;
+            width: 100%;
+        }
+        select {
+            background-color: #252540;
+            color: #ffffff;
+            cursor: pointer;
+        }
+        button {
+            background: linear-gradient(135deg, #ff7b54, #ff5733);
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        button:hover {
+            transform: scale(1.05);
+        }
+        h1, h2 {
+            color: #ffcc70;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            background: #33334d;
+            margin: 8px 0;
+            padding: 10px;
+            border-radius: 6px;
+            transition: background 0.3s;
+        }
+        li:hover {
+            background: #45456a;
+        }
+        .footer {
+            margin-top: 30px;
+            font-size: 14px;
+            color: #bbbbbb;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Road Material Recommender</h1>
+        <label for="weather">Select Weather Condition:</label>
+        <select id="weather">
+            <option value="hot">Hot</option>
+            <option value="cold">Cold</option>
+            <option value="rainy">Rainy</option>
+        </select>
+        
+        <label for="traffic">Select Traffic Load:</label>
+        <select id="traffic">
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
+        </select>
+        
+        <label for="soil">Select Soil Type:</label>
+        <select id="soil">
+            <option value="clay">Clay</option>
+            <option value="sand">Sand</option>
+            <option value="gravel">Gravel</option>
+        </select>
+        
+        <button onclick="getRecommendation()">Get Recommendation</button>
+        <h2>Recommended Materials:</h2>
+        <ul id="result"></ul>
+    </div>
+   
+    <script>
+        function getRecommendation() {
+            const weather = document.getElementById("weather").value;
+            const traffic = document.getElementById("traffic").value;
+            const soil = document.getElementById("soil").value;
+            
+            let recommendations = [];
+            if (weather === "hot") {
+                recommendations.push("Asphalt Concrete");
+            }
+            if (traffic === "high") {
+                recommendations.push("Rigid Pavement");
+            }
+            if (soil === "sand") {
+                recommendations.push("Bituminous Mix");
+            }
+            
+            if (recommendations.length === 0) {
+                recommendations.push("Standard Bituminous Mix");
+            }
+            
+            const resultElement = document.getElementById("result");
+            resultElement.innerHTML = "";
+            recommendations.forEach(material => {
+                const li = document.createElement("li");
+                li.textContent = material;
+                resultElement.appendChild(li);
+            });
+        }
+    </script>
+</body>
+</html>
