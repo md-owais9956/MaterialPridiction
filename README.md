@@ -36,8 +36,7 @@ The **Road Material Recommender** is a web-based application that helps users se
 - Implementing AI-based predictive analysis for material selection.  
 
 ## License
-This project is open-source and available for modification and enhancement.  
-
+Open Source
 ---
 
 Thank you for using the **Road Material Recommender**!  
